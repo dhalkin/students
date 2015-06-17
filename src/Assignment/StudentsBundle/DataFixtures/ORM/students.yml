@@ -1,0 +1,4 @@
+Assignment\StudentsBundle\Entity\Student:
+    student{1..25000}:
+        name: <firstName()> <lastName()>
+        description: <text($maxNbChars = 500)>
