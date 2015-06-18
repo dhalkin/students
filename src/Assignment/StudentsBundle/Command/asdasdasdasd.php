@@ -8,8 +8,8 @@
 
 namespace Assignment\StudentsBundle\Command;
 
-
-class asdasdasdasd {
+class asdasdasdasd
+{
 
 
 

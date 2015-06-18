@@ -60,7 +60,7 @@ class Student
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -83,7 +83,7 @@ class Student
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -106,7 +106,7 @@ class Student
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -116,7 +116,7 @@ class Student
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
