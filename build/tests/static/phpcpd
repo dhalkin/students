@@ -1,0 +1,7 @@
+#!/bin/bash
+./bin/phpcpd --log-pmd build/report/phpcpd.xml --quiet --min-lines 7 src
+if [ $? -ne 0 ]
+        then
+                echo "Copypaste in code detected, exiting"
+                exit 1
+fi

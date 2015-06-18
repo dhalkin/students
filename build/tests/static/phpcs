@@ -1,0 +1,7 @@
+#!/bin/bash
+./bin/phpcs src/Assignment -n -p --report-file=build/report/phpcs.txt --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2/ruleset.xml build/tests/static/rules/releset.xml
+if [ $? -ne 0 ]
+        then
+                echo "Bad code style detected, exiting"
+                exit 1
+fi
