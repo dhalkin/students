@@ -8,6 +8,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class GeneratePathCommand
+ */
 class GeneratePathCommand extends ContainerAwareCommand
 {
     protected function configure()
@@ -20,8 +23,9 @@ class GeneratePathCommand extends ContainerAwareCommand
     {
 
 
+        $midOlala = "Mide";
 
 
-        $output->writeln("olala");
+        $output->writeln("olala" . $midOlala . " 00000");
     }
 }
