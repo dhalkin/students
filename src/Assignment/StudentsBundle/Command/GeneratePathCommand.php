@@ -20,6 +20,8 @@ class GeneratePathCommand extends ContainerAwareCommand
     {
 
 
+
+
         $output->writeln("olala");
     }
 }
