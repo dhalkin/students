@@ -1,22 +1,10 @@
 
-FILE: ...ts\src\Assignment\StudentsBundle\Command\GeneratePathCommand.php
-----------------------------------------------------------------------
-FOUND 2 ERRORS AFFECTING 1 LINE
-----------------------------------------------------------------------
- 29 | ERROR | [x] Concat operator must not be surrounded by spaces
- 29 | ERROR | [x] Concat operator must not be surrounded by spaces
-----------------------------------------------------------------------
-PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
-----------------------------------------------------------------------
-
-
 FILE: ...s\src\Assignment\StudentsBundle\Controller\DefaultController.php
 ----------------------------------------------------------------------
-FOUND 3 ERRORS AFFECTING 3 LINES
+FOUND 2 ERRORS AFFECTING 2 LINES
 ----------------------------------------------------------------------
-  9 | ERROR | Missing class doc comment
- 11 | ERROR | Doc comment for parameter "$name" missing
- 14 | ERROR | Missing @return tag in function comment
+ 14 | ERROR | Doc comment for parameter "$name" missing
+ 17 | ERROR | Missing @return tag in function comment
 ----------------------------------------------------------------------
 
 

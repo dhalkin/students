@@ -1,2 +1,2 @@
 #!/bin/bash
-./bin/phpcbf src/Assignment --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2/ruleset.xml
+./bin/phpcbf src/Assignment --standard=build/tests/static/rules/ruleset.xml

@@ -13,7 +13,7 @@ class StudentsLoader extends DataFixtureLoader
     protected function getFixtures()
     {
         return  array(
-            __DIR__.'/students.yml',
+            __DIR__ . '/students.yml',
 
         );
     }
