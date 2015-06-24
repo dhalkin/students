@@ -4,8 +4,16 @@ namespace Assignment\StudentsBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class DefaultControllerTest
+ * @package Assignment\StudentsBundle\Tests\Controller
+ */
 class DefaultControllerTest extends WebTestCase
 {
+
+    /**
+     *@inheritdoc
+     */
     public function testIndex()
     {
         $client = static::createClient();

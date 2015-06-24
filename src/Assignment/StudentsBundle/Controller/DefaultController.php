@@ -14,7 +14,8 @@ class DefaultController extends Controller
     /**
      * @Route("/hello/{name}")
      * @Template()
-     * var string $name
+     * @param string $name
+     * @return array
      */
     public function indexAction($name)
     {
