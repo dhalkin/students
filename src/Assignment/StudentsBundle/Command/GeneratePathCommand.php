@@ -10,6 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class GeneratePathCommand
+ * @package Assignment\StudentsBundle\Command
  */
 class GeneratePathCommand extends ContainerAwareCommand
 {
@@ -21,11 +22,26 @@ class GeneratePathCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $em = $this->getContainer()->get('doctrine')->getManager();
+        $q = $em->createQuery('select s from AssignmentStudentsBundle:Student s');
+        $iterableResult = $q->iterate();
+        $arr = [];
 
+        foreach ($iterableResult as $row) {
+            $student = $row[0];
 
-        $midOlala = "Mide";
+            if (array_key_exists($student->getName(), $arr)) {
+                ++$arr[$student->getName()];
+                $newPath = strtolower(str_replace(' ', '_', $student->getName()) . '_' . $arr[$student->getName()]);
+            } else {
+                $arr[$student->getName()] = 0;
+                $newPath = strtolower(str_replace(' ', '_', $student->getName()));
+            }
+            $student->setPath($newPath);
 
-
-        $output->writeln("olala" . $midOlala . " 00000");
+        }
+        $em->flush();
+        $em->clear();
+        $output->writeln("The end.");
     }
 }
