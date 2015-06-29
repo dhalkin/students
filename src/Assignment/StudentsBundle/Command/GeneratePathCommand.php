@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Assignment\StudentsBundle\Services\GeneratePathService;
 
 /**
  * Class GeneratePathCommand
@@ -14,6 +15,21 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class GeneratePathCommand extends ContainerAwareCommand
 {
+
+    /**
+     * @var GeneratePathService
+     */
+    protected $generatePathService;
+
+    /**
+     * @param GeneratePathService $generatePathService
+     */
+    public function __construct(GeneratePathService $generatePathService)
+    {
+        $this->generatePathService = $generatePathService;
+        parent::__construct();
+    }
+
     protected function configure()
     {
         $this->setName('student:generate:path')
@@ -23,31 +39,11 @@ class GeneratePathCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $s = microtime(true);
-        $em = $this->getContainer()->get('doctrine')->getManager();
-        $q = $em->createQuery('select s from AssignmentStudentsBundle:Student s');
-        $iterableResult = $q->iterate();
-        $arr = [];
-
-        foreach ($iterableResult as $row) {
-            $student = $row[0];
-
-            if (array_key_exists($student->getName(), $arr)) {
-                ++$arr[$student->getName()];
-                $newPath = strtolower(str_replace(' ', '_', $student->getName()) . '_' . $arr[$student->getName()]);
-            } else {
-                $arr[$student->getName()] = 0;
-                $newPath = strtolower(str_replace(' ', '_', $student->getName()));
-            }
-            $student->setPath($newPath);
-
-        }
-        $em->flush();
-        $em->clear();
-
+        $this->generatePathService->generate();
         $e = microtime(true);
 
         $output->writeln("Time elapsed " . round($e - $s, 2) . ' sec');
-        $output->writeln("Memory usage: " . round(memory_get_usage() / 1024 / 1024, 2) . " Mb");
+        $output->writeln("Memory peak usage: " . round(memory_get_peak_usage() / 1048576, 2) . " Mb");
         $output->writeln("The end.");
     }
 }

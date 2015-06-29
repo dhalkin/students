@@ -2,6 +2,7 @@
 
 {% block body %}
     <h1>{{ student.name }}</h1>
-    <p>{{ student.description }}</p>
-    <p><strong>{{ "now"|date("Y-m-d H:i:s") }}</strong></p>
+    <h3>{{ student.description }}</h3>
+
+    <h2>{{ "now"|date("Y-m-d H:i:s") }}</h2>
 {% endblock %}

@@ -1,0 +1,9 @@
+services:
+  generate_path_service:
+      class:   Assignment\StudentsBundle\Services\GeneratePathService
+      arguments: [ @doctrine.orm.entity_manager ]
+  generate_path_command:
+      class: Assignment\StudentsBundle\Command\GeneratePathCommand
+      arguments: [ @generate_path_service ]
+      tags:
+        -  { name: console.command }
