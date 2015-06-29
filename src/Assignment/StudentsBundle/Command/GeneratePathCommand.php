@@ -22,6 +22,7 @@ class GeneratePathCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $s = microtime(true);
         $em = $this->getContainer()->get('doctrine')->getManager();
         $q = $em->createQuery('select s from AssignmentStudentsBundle:Student s');
         $iterableResult = $q->iterate();
@@ -42,6 +43,11 @@ class GeneratePathCommand extends ContainerAwareCommand
         }
         $em->flush();
         $em->clear();
+
+        $e = microtime(true);
+
+        $output->writeln("Time elapsed " . round($e - $s, 2) . ' sec');
+        $output->writeln("Memory usage: " . round(memory_get_usage() / 1024 / 1024, 2) . " Mb");
         $output->writeln("The end.");
     }
 }
