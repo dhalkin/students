@@ -29,6 +29,7 @@ class GeneratePathService
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
+        $this->arrPaths =[];
     }
 
     /**
@@ -57,6 +58,8 @@ class GeneratePathService
      */
     public function getPath($name)
     {
+        $name = preg_replace("/[^A-Za-z0-9 ]/", '', strip_tags($name));
+
         if (array_key_exists($name, $this->arrPaths)) {
             ++$this->arrPaths[$name];
             $newPath = strtolower(str_replace(' ', '_', $name) . '_' . $this->arrPaths[$name]);

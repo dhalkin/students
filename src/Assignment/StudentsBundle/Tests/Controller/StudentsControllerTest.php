@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Client;
 class StudentsControllerTest extends WebTestCase
 {
     const MAX_AGE = 900;
+    const MIN = 15;
     /**
      * @var Client
      */
@@ -27,21 +28,22 @@ class StudentsControllerTest extends WebTestCase
     }
 
     /**
-     * Test testDetailActionCheckCache
+     * Test testDetailActionCache
      */
-    public function testDetailActionCheckCache()
+    public function testDetailActionCache()
     {
         $this->client->request('GET', '/students/detail/john_doe');
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
         $this->assertEquals(self::MAX_AGE, $this->client->getResponse()->getMaxAge());
-        $this->assertInstanceOf('DateTime', $this->client->getResponse()->getExpires());
+        $diff = date_diff($this->client->getResponse()->getExpires(), $this->client->getResponse()->getDate());
+        $this->assertEquals(self::MIN, $diff->format('%i%'));
     }
 
     /**
-     * Test testDetailActionCheckGeneratePath
+     * Test testDetailActionGeneratePath
      */
-    public function testDetailActionCheckGeneratePath()
+    public function testDetailActionGeneratePath()
     {
         $this->client->request('GET', '/students/detail/john_doe_2');
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());

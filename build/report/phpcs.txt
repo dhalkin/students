@@ -1,1 +1,10 @@
 
+FILE: ...gnment\StudentsBundle\Tests\Services\GeneratePathServiceTest.php
+----------------------------------------------------------------------
+FOUND 2 ERRORS AFFECTING 2 LINES
+----------------------------------------------------------------------
+ 72 | ERROR | Add a comma after each item in a multi-line array
+ 73 | ERROR | Add a comma after each item in a multi-line array
+----------------------------------------------------------------------
+
+

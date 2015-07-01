@@ -35,16 +35,11 @@ class GeneratePathServiceTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     *
+     * @dataProvider dataSuccessProvider
+     * @param string $expectedRes
      */
-    public function testGetPath()
+    public function testGetPath($expectedRes)
     {
-        $expectedRes = [
-            ['John Doe', 'john_doe'],
-            ['John Doe', 'john_doe_1'],
-            ['John Doe', 'john_doe_2'],
-        ];
-
         foreach ($expectedRes as list($name, $expectedPath)) {
             $this->assertEquals(
                 $expectedPath,
@@ -52,5 +47,47 @@ class GeneratePathServiceTest extends \PHPUnit_Framework_TestCase
             );
         }
 
+    }
+
+
+    /**
+     * @dataProvider dataFailProvider
+     * @param string $name
+     * @param string $expectedPath
+     */
+    public function testFailGetPath($name, $expectedPath)
+    {
+        $this->assertEquals(
+            $expectedPath,
+            $this->service->getPath($name)
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function dataSuccessProvider()
+    {
+
+        return [
+            ['expectedRes' => [
+                    ['John Doe', 'john_doe'],
+                    ['John Doe', 'john_doe_1'],
+                    ['John Doe', 'john_doe_2'],
+                ]
+            ]
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function dataFailProvider()
+    {
+        return [
+            ['<br />', ''],
+            ['<? ?>', ''],
+            ['!@#$%^&*()+', ''],
+        ];
     }
 }
