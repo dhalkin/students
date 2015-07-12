@@ -17,10 +17,13 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
+            // todo: probably fixtures can be used only in dev/test env
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Hautelook\AliceBundle\HautelookAliceBundle(),
 
             new Assignment\StudentsBundle\AssignmentStudentsBundle()
+
+            // todo: if you want to increase app speed you can remove a unused bundles
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

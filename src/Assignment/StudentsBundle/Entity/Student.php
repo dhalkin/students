@@ -29,6 +29,8 @@ class Student
     /**
      * @var string
      *
+     * todo: can be null. use type syntax like string|null
+     *
      * @ORM\Column(name="path", type="text", nullable=true)
      */
     private $path;
