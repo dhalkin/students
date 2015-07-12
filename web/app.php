@@ -15,6 +15,7 @@ $loader->unregister();
 $apcLoader->register(true);
 */
 
+// todo: you forget to uncomment AppCache for testing
 require_once __DIR__.'/../app/AppKernel.php';
 //require_once __DIR__.'/../app/AppCache.php';
 

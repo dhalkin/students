@@ -8,6 +8,8 @@ use Doctrine\ORM\EntityManager;
 /**
  * Class GeneratePathService
  * @package Assignment\StudentsBundle\Services
+ *
+ * todo: it's better to split db logic and path name generation for two different classes, services
  */
 class GeneratePathService
 {
@@ -38,6 +40,7 @@ class GeneratePathService
     public function generate()
     {
         $i = 0;
+        // todo: use repositories for queries
         $q = $this->entityManager->createQuery('select s from AssignmentStudentsBundle:Student s');
         foreach ($q->iterate() as $row) {
             /** @var Student */
